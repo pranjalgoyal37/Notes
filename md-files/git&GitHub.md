@@ -180,5 +180,4 @@ git stash pop  # Apply and remove
   # Create a pull request by GitHub
 ```
 ---
-# some new update in this file 
-## some more update in original file 
+
