@@ -181,3 +181,11 @@ git stash pop  # Apply and remove
 ```
 ---
 
+### ssh Key Generation
+```bash
+ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_rsa
+cat ~/.ssh/id_rsa.pub
+````
+
