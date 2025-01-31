@@ -48,20 +48,24 @@ git config --global core.editor "code --wait"
 git config --list
 ```
 
-### Basic commands
-
+### Initialize Repository
   ```bash
   # initialize a new repository in the current directory
    git init
 
    # clone a repo
    git clone
+```
+### stage changes 
+```bash
+git add [filename]    # Add specific file
+git add .               # Add all 
+```
 
-    # add files to staging area
-   git add <file>
-   git add .  # add all files in the current directory
+ 
 
-  # check status of the repository
+  ### check status of the repository
+  ```bash 
   git status     #state changes before committing
   git status -s   # Show status in short format
   git reset <file>  # Unstage a file
@@ -89,48 +93,43 @@ git reset --hard HEAD~1  # Reset to previous commit and discard changes
 
 ```bash
 git log
-git log --oneline  # Show commit history in one line
+git log --oneline  # Show
 git log --graph  # Show commit history with a graph
 ```
 
 ---
 
-## Git Branching
+## Git Branching & Merging 
 
   ```bash
-  # Create a new branch 
-  git branch <branch-name>
+  git branch # list all branches
+  git branch <branch-name>  # new branch 
+  git checkout <branch-name> # switch to a branch 
+  git checkout -b <branch-name>  # create & switch to a new branch 
 
-  # switch to the new branch
-  git checkout <branch-name>
-
-  #create and switch to a new branch:
-  git checkout -b <branch-name>   
-
-  # rename a branch :
-  git branch -m <old-branch> <new-branch>
-  
-  # delete a branch :
-  git branch -d branch-name
+  git branch -m <old-branch> <new-branch>   # rename:
+  git branch -d branch-name  # delete a branch :
   ```
 
- ### Merge branches:
+ ### Merging:
   ```bash
+  git checkout master  # switch to master branch
   git merge <branch-name>
+  
+  #Note If both branches make changes to the same files, it's result in a conflict
   ```
-
 ### Resolving Merge Conflicts
+1. Edit files with conflict markers:
+  ```bash
+<<<<<<< HEAD
+Local changes
+=======
+Incoming changes
+>>>>>>> branch-name
+  ```
+2. Stage resolved files
 
-- If a merge conflict occurs:
-  1. Open the conflicting file, resolve conflicts manually.
-  2. Stage the resolved file:
-     ```bash
-     git add <file>
-     ```
-  3. Commit the changes:
-     ```bash
-     git commit -m "Resolved merge conflicts"
-     ```
+3. Commit changes
 
 ---
 
@@ -161,3 +160,24 @@ git pull origin <branch-name>  # Fetch and merge changes from remote branch
 ```bash
 git branch -d <branch-name>  # Delete a local branch
 git push origin --delete <branch-name>  # Delete a remote branch
+```
+## Advanced Techniques
+1.Stashing
+```bash
+git stash  # Stash changes temporarily
+git stash list  # List all stashed changes
+git stash pop  # Apply and remove 
+```
+2.Open Contribution
+```bash 
+  fork <repository-url>  # Fork a repository
+  git clone <fork-url>  # Clone your fork
+  git checkout -b <feature-branch>  # Create a new branch for your feature
+
+  # Make changes and commit them
+  git push origin <feature-branch>  # Push your feature branch to your fork
+
+  # Create a pull request by GitHub
+```
+---
+
