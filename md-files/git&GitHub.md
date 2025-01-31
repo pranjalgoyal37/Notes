@@ -190,3 +190,4 @@ cat ~/.ssh/id_rsa.pub
 ````
 add more point after update git congfig
 new 
+new 1
